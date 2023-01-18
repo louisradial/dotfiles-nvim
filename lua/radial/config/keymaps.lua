@@ -48,23 +48,13 @@ vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 -- indenting
 map('n', '<leader>if', "gg=G''", { desc = '[I]ndent [F]ile' })
 
--- nvim-tree
-map('n', '<leader>ex', ':NvimTreeToggle<CR>', { desc = 'File [Ex]plorer' })
-
--- telescope
-local telescope = require'telescope.builtin'
-
-map('n', '<leader>?', telescope.oldfiles, { desc = '[?] Find recently opened files' })
-map('n', '<leader><space>', telescope.buffers, {desc = '[ ] Find existing buffers'})
-map('n', '<leader>/', function()
-    telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewr = false,
-    })
-end, { desc = '[/] Fuzzily search in current buffer]' })
--- map('n', '<leader>p' function() telescope.git_files { show_untracked = true } end)
-map('n', '<leader>sf', telescope.find_files, { desc = '[S]earch [F]iles' })
-map('n', '<leader>sh', telescope.help_tags, { desc = '[S]earch [H]elp' })
-map('n', '<leader>sw', telescope.grep_string, { desc = '[S]earch current [W]ord' })
-map('n', '<leader>sg', telescope.live_grep, { desc = '[S]earch by [G]rep' })
-map('n', '<leader>sd', telescope.diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- windows specific
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  map('n', '<C-z>', '<nop>')
+  map('i', '<C-z>', '<nop>')
+  map('v', '<C-z>', '<nop>')
+  map('s', '<C-z>', '<nop>')
+  map('x', '<C-z>', '<nop>')
+  map('c', '<C-z>', '<nop>')
+  map('o', '<C-z>', '<nop>')
+end

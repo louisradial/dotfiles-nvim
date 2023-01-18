@@ -1,6 +1,9 @@
 local o = vim.o
 local g = vim.g
 
+g.mapleader = ' '
+g.maplocalleader = ' '
+
 -- number lines and relative number lines
 o.number = true
 o.relativenumber = true
@@ -29,7 +32,9 @@ o.scrolloff = 8
 
 -- completeopt
 o.completeopt = 'menuone,noinsert,noselect'
--- o.shortmess = o.shortmess + "c"
+vim.opt.shortmess:append "c"
 
-g.mapleader = ' '
-g.maplocalleader = ' '
+-- format options
+-- vim.opt.formatoptions:remove "o"
+vim.cmd [[au BufEnter * set fo-=o fo-=r fo-=c]]
+vim.opt.fillchars:append('eob: ')
