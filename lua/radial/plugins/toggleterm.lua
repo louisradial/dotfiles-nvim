@@ -28,6 +28,6 @@ return {
     },
     config = function(_, opts)
         require('toggleterm').setup(opts)
-        vim.keymap.set('t', '<Esc>', [[<c-\><c-n>:q<cr>]], {desc = 'Quit terminal'})
+        vim.keymap.set('t', '<Esc>', [[<c-\><c-n>:bd<cr>]], {desc = 'Quit terminal'})
     end
 }

@@ -9,6 +9,7 @@ o.number = true
 o.relativenumber = true
 o.cursorline = true
 -- o.showmatch = true
+o.showmode = false
 
 -- indenting
 o.breakindent = true
