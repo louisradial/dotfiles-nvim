@@ -3,9 +3,7 @@ return {
     dependencies = {
         { 'nvim-tree/nvim-web-devicons' },
     },
-    lazy = false,
-    priority = 999,
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     opts = function()
         local colors = require("tokyonight.colors").setup()
         -- local theme = require("tokyonight.themes").setup({ transform = true })
@@ -52,7 +50,7 @@ return {
 
         local filename = {
             'filename',
-            color = { bg = colors.blue, fg = colors.bg },
+            color = { bg = colors.blue, fg = colors.bg_highlight },
             separator = { left = "", right = "" },
         }
 
@@ -64,18 +62,38 @@ return {
             separator = { left = "", right = "" },
         }
 
-        local filetype_tab = {
-            "filetype",
-            icon_only = true,
-            colored = true,
-            color = { bg = colors.bg_highlight },
-        }
+        -- local filetype_tab = {
+        --     "filetype",
+        --     icon_only = true,
+        --     colored = true,
+        --     color = { bg = colors.bg_highlight },
+        -- }
 
         local buffers = {
             'buffers',
-            color = { bg = colors.blue, fg = colors.bg },
+            buffers_color = {
+                active = { bg = colors.blue, fg = colors.bg_highlight },
+                inactive = { bg = colors.bg_highlight, fg = colors.blue },
+            },
+            -- color = { bg = colors.blue, fg = colors.bg },
             separator = { left = "", right = "" },
-            -- require 'tabline'.tabline_buffers,
+            on_click = nil,
+
+            filetype_names = {
+                TelescopePrompt = 'Telescope',
+                dashboard = 'Dashboard',
+                packer = 'Packer',
+                fzf = 'FZF',
+                alpha = 'Alpha',
+                toggleterm = 'terminal',
+            }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
+
+            symbols = {
+                modified = ' ●', -- Text to show when the buffer is modified
+                alternate_file = '', -- Text to show to identify the alternate file
+                directory = '', -- Text to show when the buffer is a directory
+            },
+
         }
 
         -- local tabs = {
@@ -104,7 +122,16 @@ return {
 
         local diff = {
             "diff",
+            colored = true, -- Displays a colored diff status if set to true
+            -- diff_color = {
+            --     -- Same color values as the general color option can be used here.
+            --     added    = 'DiffAdd', -- Changes the diff's added color
+            --     modified = 'DiffChange', -- Changes the diff's modified color
+            --     removed  = 'DiffDelete', -- Changes the diff's removed color you
+            -- },
+            symbols = { added = '+', modified = '~', removed = '-' },
             color = { bg = colors.bg_highlight, fg = colors.teal },
+            -- diff_color = { added = colors.git.add, modified = colors.git.change, removed = colors.git.delete },
             separator = { left = "", right = "" },
         }
 
@@ -116,7 +143,6 @@ return {
 
         local location = {
             'location',
-            left_padding = 0,
             separator = { left = "", right = "" },
             color = { bg = colors.cyan, fg = colors.bg_highlight },
         }
@@ -124,6 +150,7 @@ return {
         local modes = {
             'mode',
             separator = { left = "", right = "" },
+            color = { fg = colors.bg_highlight },
         }
 
         local function getLspName()
@@ -169,8 +196,7 @@ return {
                 -- component_separators = { '', '' },
                 -- section_separators = { '', '' },
                 disabled_filetypes = {
-                    -- winbar = { "alpha" },
-                    -- tabline = { "alpha", "NvimTree", "TelescopePrompt"},
+                    { "alpha", "NvimTree", "TelescopePrompt" },
                 },
                 ignore_focus = { "NvimTree" },
                 always_divide_middle = true,
@@ -195,7 +221,6 @@ return {
                 },
                 lualine_b = {
                     space,
-
                 },
                 lualine_c = {
                     filename,
@@ -222,16 +247,20 @@ return {
             inactive_sections = {
                 lualine_a = {},
                 lualine_b = {},
-                lualine_c = { 'filename' },
-                lualine_x = { 'location' },
+                -- lualine_c = { 'filename' },
+                lualine_c = {},
+                -- lualine_x = { 'location' },
+                lualine_x = {},
                 lualine_y = {},
                 lualine_z = {}
             },
             tabline = {
                 lualine_a = {
+                    space,
                     buffers,
                 },
                 lualine_b = {
+                    -- filetype_tab,
                 },
                 lualine_c = {
                 },
@@ -246,5 +275,11 @@ return {
             inactive_winbar = {},
             extensions = { 'nvim-tree', 'toggleterm' }
         }
+    end,
+    config = function(_, opts)
+        require('lualine').setup(opts)
+
+        -- vim.api.nvim_set_hl(0, "StatusLine", { link = "Normal" })
+        -- vim.api.nvim_set_hl(0, "StatusLineNC", { link = "Normal" })
     end,
 }
