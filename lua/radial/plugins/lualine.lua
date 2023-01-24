@@ -72,8 +72,8 @@ return {
         local buffers = {
             'buffers',
             buffers_color = {
-                active = { bg = colors.blue, fg = colors.bg_highlight },
-                inactive = { bg = colors.bg_highlight, fg = colors.blue },
+                active = { bg = colors.blue, fg = colors.terminal_black },
+                inactive = { bg = colors.terminal_black, fg = colors.blue },
             },
             -- color = { bg = colors.blue, fg = colors.bg },
             separator = { left = "", right = "" },
@@ -86,6 +86,7 @@ return {
                 fzf = 'FZF',
                 alpha = 'Alpha',
                 toggleterm = 'terminal',
+                NvimTree = 'File Tree',
             }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
 
             symbols = {
@@ -171,7 +172,7 @@ return {
 
         local dia = {
             'diagnostics',
-            color = { bg = colors.bg_highlight, fg = colors.red1 },
+            color = { bg = colors.bg_highlight, fg = colors.red },
             separator = { left = "", right = "" },
         }
 
@@ -180,7 +181,7 @@ return {
                 return getLspName()
             end,
             separator = { left = "", right = "" },
-            color = { bg = colors.red1, fg = colors.bg_highlight },
+            color = { bg = colors.red, fg = colors.bg_highlight },
         }
 
         return {

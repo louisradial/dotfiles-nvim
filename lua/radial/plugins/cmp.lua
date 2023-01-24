@@ -1,7 +1,7 @@
 return {
     "hrsh7th/nvim-cmp",
     -- version = false, -- last release is way too old
-    event = "InsertEnter",
+    -- event = "InsertEnter",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lua",
@@ -32,6 +32,11 @@ return {
                 ["<Tab>"] = nil,
                 ["<S-Tab>"] = nil,
             }),
+
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "nvim_lua" },
@@ -39,9 +44,9 @@ return {
                 { name = "buffer", keyword_length = 5 },
                 { name = "path" },
             }),
-            view = { entries = 'native', },
+            -- view = { entries = 'native', },
             formatting = {
-                format = function(_, item)
+                format = function(entry, item)
                     local icons = {
                         Array = " ",
                         Boolean = " ",
@@ -90,5 +95,19 @@ return {
                 },
             },
         }
+    end,
+    config = function(_, opts)
+        require('cmp').setup(opts)
+        vim.cmd[[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]]
+        vim.cmd[[highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6]]
+        vim.cmd[[highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch]]
+        vim.cmd[[highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE]]
+        vim.cmd[[highlight! link CmpItemKindInterface CmpItemKindVariable]]
+        vim.cmd[[highlight! link CmpItemKindText CmpItemKindVariable]]
+        vim.cmd[[highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0]]
+        vim.cmd[[highlight! link CmpItemKindMethod CmpItemKindFunction]]
+        vim.cmd[[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]]
+        vim.cmd[[highlight! link CmpItemKindProperty CmpItemKindKeyword]]
+        vim.cmd[[highlight! link CmpItemKindUnit CmpItemKindKeyword]]
     end,
 }
