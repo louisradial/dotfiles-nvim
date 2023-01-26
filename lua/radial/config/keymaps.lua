@@ -17,9 +17,15 @@ map('n', '<leader>o', 'o<Esc>', { desc = 'Insert new line below the cursor and e
 map('n', '<leader>O', 'O<Esc>', { desc = 'Insert new line above the cursor and exit Insert mode'})
 
 
--- visual selection move up/down
-map('v', 'J', ":m '>+1<CR>gv=gv")
-map('v', 'K', ":m '<-2<CR>gv=gv")
+-- normal current line move up/down
+map('n', '<A-j>', ":m .+1<CR>==")
+map('n', '<A-k>', ":m .-2<CR>==")
+-- normal current line move up/down
+map('i', '<A-j>', "<Esc>:m .+1<CR>==gi")
+map('i', '<A-k>', "<Esc>:m .-2<CR>==gi")
+-- visual current line move up/down
+map('v', '<A-j>', ":m '>+1<CR>gv=gv")
+map('v', '<A-k>', ":m '<-2<CR>gv=gv")
 
 -- cursor kept in place
 map('n', 'J', "mzJ`z")

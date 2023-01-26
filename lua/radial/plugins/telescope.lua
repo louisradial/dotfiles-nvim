@@ -3,10 +3,11 @@ return {
         'nvim-telescope/telescope.nvim',
         cmd = "Telescope",
         keys = {
-            -- {'<leader>p', function() '<cmd>Telescope git_files<cr>' { show_untracked = true } end},
+            { '<leader>gf', '<cmd>Telescope git_files show_untracked=true<cr>', desc = '[G]it [F]iles' },
             { '<leader>sf', '<cmd>Telescope find_files<cr>', desc = '[S]earch [F]iles' },
             { '<leader>so', '<cmd>Telescope oldfiles<cr>', desc = '[S]earch [O]ld files' },
-            { '<leader>sb', '<cmd>Telescope buffers hidden=true layout_config={prompt_position:"center"}<cr>', desc = '[S]earch [B]uffers' },
+            { '<leader>sb', '<cmd>Telescope buffers hidden=true layout_config={prompt_position:"center"}<cr>',
+                desc = '[S]earch [B]uffers' },
             { '<leader>sh', '<cmd>Telescope help_tags<cr>', desc = '[S]earch [H]elp' },
             { '<leader>sw', '<cmd>Telescope grep_string<cr>', desc = '[S]earch current [W]ord' },
             { '<leader>sg', '<cmd>Telescope live_grep<cr>', desc = '[S]earch by [G]rep' },
@@ -43,7 +44,6 @@ return {
                     previewr = false,
                 })
             end)
-            vim.keymap.set('n', '<leader>p', function() builtin.git_files { show_untracked = true } end)
         end,
     }
 }

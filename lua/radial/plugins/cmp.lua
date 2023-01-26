@@ -38,11 +38,11 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
             sources = cmp.config.sources({
-                { name = "nvim_lsp" },
-                { name = "nvim_lua" },
-                { name = "luasnip" },
+                { name = "nvim_lsp", keyword_length = 4 },
+                { name = "nvim_lua", keyword_length = 5 },
+                { name = "luasnip", keyword_length = 2 },
                 { name = "buffer", keyword_length = 5 },
-                { name = "path" },
+                { name = "path", keyword_length = 5 },
             }),
             -- view = { entries = 'native', },
             formatting = {
@@ -98,16 +98,16 @@ return {
     end,
     config = function(_, opts)
         require('cmp').setup(opts)
-        vim.cmd[[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]]
-        vim.cmd[[highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6]]
-        vim.cmd[[highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch]]
-        vim.cmd[[highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE]]
-        vim.cmd[[highlight! link CmpItemKindInterface CmpItemKindVariable]]
-        vim.cmd[[highlight! link CmpItemKindText CmpItemKindVariable]]
-        vim.cmd[[highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0]]
-        vim.cmd[[highlight! link CmpItemKindMethod CmpItemKindFunction]]
-        vim.cmd[[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]]
-        vim.cmd[[highlight! link CmpItemKindProperty CmpItemKindKeyword]]
-        vim.cmd[[highlight! link CmpItemKindUnit CmpItemKindKeyword]]
+        -- vim.cmd[[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]]
+        -- vim.cmd[[highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6]]
+        -- vim.cmd[[highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch]]
+        -- vim.cmd[[highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE]]
+        -- vim.cmd[[highlight! link CmpItemKindInterface CmpItemKindVariable]]
+        -- vim.cmd[[highlight! link CmpItemKindText CmpItemKindVariable]]
+        -- vim.cmd[[highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0]]
+        -- vim.cmd[[highlight! link CmpItemKindMethod CmpItemKindFunction]]
+        -- vim.cmd[[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]]
+        -- vim.cmd[[highlight! link CmpItemKindProperty CmpItemKindKeyword]]
+        -- vim.cmd[[highlight! link CmpItemKindUnit CmpItemKindKeyword]]
     end,
 }
