@@ -46,12 +46,14 @@ return {
                 return " "
             end,
             color = { bg = colors.bg, fg = colors.blue },
+            padding = { left = 1, right = 1 },
         }
 
         local filename = {
             'filename',
             color = { bg = colors.blue, fg = colors.bg_highlight },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local filetype = {
@@ -60,6 +62,7 @@ return {
             colored = true,
             color = { bg = colors.bg_highlight },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         -- local filetype_tab = {
@@ -94,7 +97,7 @@ return {
                 alternate_file = '', -- Text to show to identify the alternate file
                 directory = '', -- Text to show when the buffer is a directory
             },
-
+            padding = { left = 1, right = 1 },
         }
 
         -- local tabs = {
@@ -107,18 +110,21 @@ return {
             'fileformat',
             color = { bg = colors.purple, fg = colors.bg_highlight },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local encoding = {
             'encoding',
             color = { bg = colors.bg_highlight, fg = colors.purple },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local branch = {
             'branch',
             color = { bg = colors.teal, fg = colors.bg_highlight },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local diff = {
@@ -134,24 +140,28 @@ return {
             color = { bg = colors.bg_highlight, fg = colors.teal },
             -- diff_color = { added = colors.git.add, modified = colors.git.change, removed = colors.git.delete },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local progress = {
             'progress',
             separator = { left = "", right = "" },
             color = { bg = colors.bg_highlight, fg = colors.cyan },
+            padding = { left = 1, right = 1 },
         }
 
         local location = {
             'location',
             separator = { left = "", right = "" },
             color = { bg = colors.cyan, fg = colors.bg_highlight },
+            padding = { left = 1, right = 1 },
         }
 
         local modes = {
             'mode',
             separator = { left = "", right = "" },
             color = { fg = colors.bg_highlight },
+            padding = { left = 1, right = 1 },
         }
 
         local function getLspName()
@@ -170,10 +180,11 @@ return {
             return "  " .. msg
         end
 
-        local dia = {
+        local diagnostics = {
             'diagnostics',
             color = { bg = colors.bg_highlight, fg = colors.red },
             separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local lsp = {
@@ -182,6 +193,16 @@ return {
             end,
             separator = { left = "", right = "" },
             color = { bg = colors.red, fg = colors.bg_highlight },
+            padding = { left = 1, right = 1 },
+        }
+
+        local date = {
+            function()
+              return "  " .. os.date("%R")
+            end,
+            separator = { left = "", right = "" },
+            color = { bg = colors.magenta, fg = colors.bg_highlight },
+            padding = { left = 0, right = 0 },
         }
 
         return {
@@ -241,7 +262,7 @@ return {
                     space,
                 },
                 lualine_z = {
-                    dia,
+                    diagnostics,
                     lsp,
                 }
             },
@@ -270,6 +291,7 @@ return {
                 lualine_y = {
                 },
                 lualine_z = {
+                    date,
                 },
             },
             winbar = {},
