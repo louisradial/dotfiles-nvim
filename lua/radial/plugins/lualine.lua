@@ -46,7 +46,7 @@ return {
                 return " "
             end,
             color = { bg = colors.bg, fg = colors.blue },
-            padding = { left = 1, right = 1 },
+            padding = { left = 1, right = 0 },
         }
 
         local filename = {
@@ -81,17 +81,15 @@ return {
             -- color = { bg = colors.blue, fg = colors.bg },
             separator = { left = "", right = "" },
             on_click = nil,
-
             filetype_names = {
                 TelescopePrompt = 'Telescope',
                 dashboard = 'Dashboard',
-                packer = 'Packer',
+                lazy = "Lazy",
                 fzf = 'FZF',
                 alpha = 'Alpha',
                 toggleterm = 'terminal',
                 NvimTree = 'File Tree',
             }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
-
             symbols = {
                 modified = ' ●', -- Text to show when the buffer is modified
                 alternate_file = '', -- Text to show to identify the alternate file
@@ -198,7 +196,7 @@ return {
 
         local date = {
             function()
-              return "  " .. os.date("%R")
+                return "  " .. os.date("%R")
             end,
             separator = { left = "", right = "" },
             color = { bg = colors.magenta, fg = colors.bg_highlight },
@@ -218,9 +216,11 @@ return {
                 -- component_separators = { '', '' },
                 -- section_separators = { '', '' },
                 disabled_filetypes = {
-                    { "alpha", "NvimTree", "TelescopePrompt" },
+                    statusline = { "dashboard", "alpha", "NvimTree", "lazy" },
                 },
-                ignore_focus = { "NvimTree" },
+                ignore_focus = {
+                    "lazy", "NvimTree", "toggleterm", "TelescopePrompt",
+                },
                 always_divide_middle = true,
                 globalstatus = true,
                 refresh = {
