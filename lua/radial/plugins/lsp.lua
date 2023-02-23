@@ -5,17 +5,17 @@ return {
     dependencies = {
         -- LSP support
         { 'neovim/nvim-lspconfig' },
-        { 'williamboman/mason.nvim', opt = true },
-        { 'williamboman/mason-lspconfig.nvim', opt = true },
+        { 'williamboman/mason.nvim', lazy = true },
+        { 'williamboman/mason-lspconfig.nvim', lazy = true },
 
         -- Snippets
-        { 'L3MON4D3/LuaSnip', opt = true },
-        { 'rafamadriz/friendly-snippets', opt = true },
+        { 'L3MON4D3/LuaSnip', lazy = true },
+        { 'rafamadriz/friendly-snippets', lazy = true },
 
         --
-        { 'j-hui/fidget.nvim', opt = true },
-        { 'folke/neodev.nvim', opt = true },
-        { 'simrat39/rust-tools.nvim', opt = true },
+        { 'j-hui/fidget.nvim', lazy = true },
+        { 'folke/neodev.nvim', lazy = true },
+        { 'simrat39/rust-tools.nvim', lazy = true },
     },
     config = function()
         require('neodev').setup()
@@ -23,12 +23,12 @@ return {
 
         lsp.preset 'lsp-compe'
         lsp.ensure_installed({
-            'sumneko_lua',
+            'lua_ls',
             'pyright',
             'rust_analyzer',
         })
 
-        lsp.configure('sumneko_lua', {
+        lsp.configure('lua_ls', {
             settings = {
                 Lua = {
                     diagnostics = {

@@ -30,11 +30,15 @@ return {
                 },
             },
             sync_root_with_cwd = true,
-            open_on_setup = false,
             ignore_buffer_on_setup = true,
             update_focused_file = {
                 enable = true,
                 update_cwd = false,
+            },
+            actions = {
+                open_file = {
+                    quit_on_open = true,
+                },
             },
             filters = { custom = { "^.git$" } },
             renderer = {
