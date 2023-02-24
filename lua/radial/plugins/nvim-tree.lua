@@ -30,7 +30,7 @@ return {
                 },
             },
             sync_root_with_cwd = true,
-            ignore_buffer_on_setup = true,
+            -- ignore_buffer_on_setup = true,
             update_focused_file = {
                 enable = true,
                 update_cwd = false,
