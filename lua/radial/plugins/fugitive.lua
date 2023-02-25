@@ -1,7 +1,7 @@
 return {
     {
         'tpope/vim-fugitive',
-        cmd = {'Git', 'G'}
+        cmd = 'G',
     },
     -- {
     --     'lewis6991/gitsigns.nvim',

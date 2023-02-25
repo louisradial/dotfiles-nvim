@@ -6,7 +6,6 @@ return {
     event = "VeryLazy",
     opts = function()
         local colors = require("tokyonight.colors").setup()
-        -- local theme = require("tokyonight.themes").setup({ transform = true })
 
         local theme = {
             normal = {
@@ -36,15 +35,13 @@ return {
             },
             inactive = {
                 a = { bg = colors.bg, fg = colors.blue },
-                b = { bg = colors.bg, fg = colors.fg_gutter }, --, gui = "bold" },
+                b = { bg = colors.bg, fg = colors.fg_gutter },
                 c = { bg = colors.bg, fg = colors.fg_gutter },
             },
         }
 
         local space = {
-            function()
-                return " "
-            end,
+            function() return " " end,
             color = { bg = colors.bg, fg = colors.blue },
             padding = { left = 1, right = 0 },
         }
@@ -65,20 +62,12 @@ return {
             padding = { left = 1, right = 1 },
         }
 
-        -- local filetype_tab = {
-        --     "filetype",
-        --     icon_only = true,
-        --     colored = true,
-        --     color = { bg = colors.bg_highlight },
-        -- }
-
         local buffers = {
             'buffers',
             buffers_color = {
                 active = { bg = colors.blue, fg = colors.terminal_black },
                 inactive = { bg = colors.terminal_black, fg = colors.blue },
             },
-            -- color = { bg = colors.blue, fg = colors.bg },
             separator = { left = "", right = "" },
             on_click = nil,
             filetype_names = {
@@ -97,12 +86,6 @@ return {
             },
             padding = { left = 1, right = 1 },
         }
-
-        -- local tabs = {
-        --     'tabs',
-        --     -- require 'tabline'.tabline_tabs,
-        --     separator = { left = "", right = "" },
-        -- }
 
         local fileformat = {
             'fileformat',
@@ -127,16 +110,9 @@ return {
 
         local diff = {
             "diff",
-            colored = true, -- Displays a colored diff status if set to true
-            -- diff_color = {
-            --     -- Same color values as the general color option can be used here.
-            --     added    = 'DiffAdd', -- Changes the diff's added color
-            --     modified = 'DiffChange', -- Changes the diff's modified color
-            --     removed  = 'DiffDelete', -- Changes the diff's removed color you
-            -- },
+            colored = true,
             symbols = { added = '+', modified = '~', removed = '-' },
             color = { bg = colors.bg_highlight, fg = colors.teal },
-            -- diff_color = { added = colors.git.add, modified = colors.git.change, removed = colors.git.delete },
             separator = { left = "", right = "" },
             padding = { left = 1, right = 1 },
         }
@@ -213,14 +189,10 @@ return {
                 -- section_separators = { left = '', right = '' },
                 -- component_separators = { left = '', right = '' },
                 -- section_separators = { left = '', right = '' },
-                -- component_separators = { '', '' },
-                -- section_separators = { '', '' },
                 disabled_filetypes = {
                     statusline = { "dashboard", "alpha", "NvimTree", "lazy" },
                 },
-                ignore_focus = {
-                    "lazy", "NvimTree", "toggleterm", "TelescopePrompt",
-                },
+                ignore_focus = { "lazy", "NvimTree", "toggleterm", "TelescopePrompt", },
                 always_divide_middle = true,
                 globalstatus = true,
                 refresh = {
@@ -229,80 +201,29 @@ return {
                     winbar = 1000,
                 }
             },
-            -- sections = {
-            --     lualine_a = { 'mode' },
-            --     lualine_b = { 'branch', 'diff', 'diagnostics' },
-            --     lualine_c = { 'filename' },
-            --     lualine_x = { 'encoding', 'fileformat', 'filetype' },
-            --     lualine_y = { 'progress' },
-            --     lualine_z = { 'location' }
-            -- },
             sections = {
-                lualine_a = {
-                    modes,
-                },
-                lualine_b = {
-                    space,
-                },
-                lualine_c = {
-                    filename,
-                    filetype,
-                    space,
-                    branch,
-                    diff,
-                },
-                lualine_x = {
-                    encoding,
-                    fileformat,
-                    space,
-                },
-                lualine_y = {
-                    progress,
-                    location,
-                    space,
-                },
-                lualine_z = {
-                    diagnostics,
-                    lsp,
-                }
+                lualine_a = { modes, },
+                lualine_b = { space, },
+                lualine_c = { filename, filetype, space, branch, diff, },
+                lualine_x = { encoding, fileformat, space, },
+                lualine_y = { progress, location, space, },
+                lualine_z = { diagnostics, lsp, }
             },
-            inactive_sections = {
+            inactive_sections = {},
+            tabline = {
                 lualine_a = {},
-                lualine_b = {},
-                -- lualine_c = { 'filename' },
+                lualine_b = { buffers, },
                 lualine_c = {},
-                -- lualine_x = { 'location' },
                 lualine_x = {},
                 lualine_y = {},
-                lualine_z = {}
-            },
-            tabline = {
-                lualine_a = {
-                    space,
-                    buffers,
-                },
-                lualine_b = {
-                    -- filetype_tab,
-                },
-                lualine_c = {
-                },
-                lualine_x = {
-                },
-                lualine_y = {
-                },
-                lualine_z = {
-                    date,
-                },
+                lualine_z = { date, },
             },
             winbar = {},
             inactive_winbar = {},
-            extensions = { 'nvim-tree', 'toggleterm' }
+            extensions = {
+                'nvim-tree',
+                'toggleterm',
+            },
         }
-    end,
-    config = function(_, opts)
-        require('lualine').setup(opts)
-
-        -- vim.api.nvim_set_hl(0, "StatusLine", { link = "Normal" })
-        -- vim.api.nvim_set_hl(0, "StatusLineNC", { link = "Normal" })
     end,
 }
