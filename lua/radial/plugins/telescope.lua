@@ -38,6 +38,7 @@ return {
             })
             telescope.load_extension("file_browser")
 
+            -- TODO make it available before lazy loads this plugin
             vim.keymap.set('n', '<leader>/', function()
                 builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                     winblend = 10,
