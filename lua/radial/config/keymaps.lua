@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
 -- map('n', '<leader>w', ':w<CR>')
-map('n', '<C-q>', ':q<CR>', { desc = '[Q]uit nvim'})
+-- map('n', '<C-q>', ':q<CR>', { desc = '[Q]uit nvim'}) -- conflicts with visual block
 map('n', '<leader>q', ':bd<CR>', { desc = '[Q]uit current buffer'})
 map('n', '<leader><Right>', ':bnext<CR>', {desc = 'Move to the next buffer'})
 map('n', '<leader><Left>', ':bprev<CR>', {desc = 'Move to the previous buffer'})
